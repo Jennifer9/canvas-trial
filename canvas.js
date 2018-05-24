@@ -4,7 +4,9 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
-c.fillStyle = "blue";
+// c.fillStyle = "blue";
+// c.font = "30px Arial";
+// c.fillText("Hello World", 10, 50);
 
 // c.fillStyle = 'rgba(255, 0, 0, 0.1)';
 // c.fillRect(100, 100, 100, 100);
@@ -48,11 +50,11 @@ var maxRad = 40;
 //var minRad = 2;
 
 var colorArray = [
-  '#7C5AD1',
-  '#AB90F0',
-  '#F5C293',
-  '#FAE8C3',
-  '#EDEDED'
+  '#F6C5C0',
+  '#B1A692',
+  '#B4BABA',
+  '#F2F2F2',
+  '#C1A29B'
 ];
 
 window.addEventListener('mousemove',
@@ -75,16 +77,19 @@ function Circle(x, y, dx, dy, radius) { //capitalize to indicate its an object
   this.dy = dy;
   this.radius = radius;
   this.minRad = radius;
-  this.color = this.color;
+  this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
 
   this.draw = function() {
     //draw the Circle
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.fillStyle = colorArray[Math.floor(Math.random() * colorArray.length)];
+    c.fillStyle = this.color;
     c.fill();
     // c.strokeStyle = 'blue';
     // c.stroke();
+    // c.font = "15px Arial";
+    // c.fillStyle = '28d1fa';
+    // c.fillText(time, 175, 280);
   }
 
   this.update = function() {
@@ -136,6 +141,8 @@ function init() {
     var dy = (Math.random() - 0.5);
     circleArray.push(new Circle(x, y, dx, dy, radius));
   }
+  // c.font = "15px Arial";
+  // c.fillText(time, 175, 280);
 }
 
 function animate() {
